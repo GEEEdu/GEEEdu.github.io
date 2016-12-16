@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <link href="styling.css" rel="stylesheet" type="text/css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+	<script src="lista.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+	<div style="max-width:900px;margin:auto">
+	<table style="border-spacing:0">
+	    <tr><td>Busca: </td><td><input type="text" size="45" id="buscatps"> <span id="togg_ctrl" style="font-size:70%;cursor:pointer">Controles avançados ></td></tr>
+	    <tr><td></td><td style="color:gray;font-size:80%;font-style:italic">(nome, sigla ou professor da matéria)</td></tr>
+	</table>
+	<div id="ctrl_av" style="display:none">
+	    <p style="margin-top:1em;margin-bottom:0;font-size:95%;padding-left:10px">
+	    Períodos
+	    </p>
+	    <p style="padding-left:50px;margin-top:0">
+	    <table id="grade">
+		<tr><th>seg</th><th>ter</th><th>qua</th><th>qui</th><th>sex</th><th>sáb</th></tr>
+		<tr><td class="grade_chk">Manhã</td><td class="grade_chk">Manhã</td><td class="grade_chk">Manhã</td><td class="grade_chk">Manhã</td><td class="grade_chk">Manhã</td><td class="grade_chk">Manhã</td></tr>
+		<tr><td class="grade_chk">Tarde</td><td class="grade_chk">Tarde</td><td class="grade_chk">Tarde</td><td class="grade_chk">Tarde</td><td class="grade_chk">Tarde</td><td class="grade_chk">Tarde</td></tr>
+		<tr><td class="grade_chk">Noite</td><td class="grade_chk">Noite</td><td class="grade_chk">Noite</td><td class="grade_chk">Noite</td><td class="grade_chk">Noite</td><td class="grade_chk">Noite</td></tr>
+	    </table>
+	    </p>
+	    <p style="margin-top:0.5em;margin-bottom:0;font-size:95%;padding-left:10px">
+	    Departamento
+	    </p>
+	    <p id="dep" style="padding-left:50px;margin-top:0.5em;font-size:80%;vertical-align:middle">
+	    <input type="checkbox" value="Adm Escolar e Economia da Educação" checked> Administração Escolar e Economia da Educação
+	    <br>
+	    <input type="checkbox" value="Filosofia da Educ e Ciências da Educ" checked> Filosofia da Educação e Ciências da Educação
+	    <br>
+	    <input type="checkbox" value="Metodologia do Ensino e Ed Comparada" checked> Metodologia do Ensino e Educação Comparada
+	    <br><input type="checkbox" value="Disciplinas Interdepartamentais da Faculdade de Educação" checked> Disciplinas interdepartamentais
+	    </p>
+	</div>
+	<table id="example" class="display" cellspacing="0" width="100%">
+	    <thead>
+		<tr>
+		    <th>Departamento</th>
+		    <th>Sigla</th>
+		    <th>Matéria</th>
+		    <th>Cód. Turma</th>
+		</tr>
+	    </thead>
+	    <tfoot>
+		<tr>
+		    <th>Departamento</th>
+		    <th>Sigla</th>
+		    <th>Matéria</th>
+		    <th>Cód. Turma</th>
+		</tr>
+	    </tfoot>
+	</table>
+	</div>
+    </body>
+</html>
