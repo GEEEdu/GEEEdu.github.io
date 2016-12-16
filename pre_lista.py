@@ -8,8 +8,6 @@ inter = pd.concat([
 ],axis=1)
 inter['DURACAO'] = inter['HR_FIM'] - inter['HR_INI']
 
-#lista['INI_FIM'] = lista['HR_INI'].str.cat(lista['HR_FIM'],'~').str.split('~')
-
 cut_mnh = 240 - 240
 cut_tar = 720 - 240
 cut_nte = 1140 - 240
@@ -27,6 +25,8 @@ lista['periodo'].value_counts()
 
 lista = lista[['departamento','sigla','titulo','turma','desc','link','dia','periodo','professor','inicio','fim']]
 
+lista['professor'].replace({'^\(R\)':''},regex=True,inplace=True)
+
 lista.groupby(['turma','sigla'])['turma'].count().value_counts()
 
 lista['aula'] = pd.Series(lista.groupby(['sigla','turma'])['turma'].expanding().count().sort_index(level=2).values.astype('int'),index=lista.index)
@@ -36,20 +36,6 @@ lista = lista.set_index(['departamento','sigla','titulo','turma','desc','link'])
 lista.columns = ['aula'+str(pair[1])+'_'+str(pair[0]) for pair in lista.columns.values]
 lista.reset_index(inplace=True)
 
-lista.to_json('/media/fernando/Bulk/Scripts/gedae/cata_materias/lista.json','records')
-    
-
-teste.columns
-['dia','periodo','professor','inicio','fim'])
-
-aula.sort_index()
-
-teste 
-= pd.DataFrame({'a':[2,2,1,1,3,3],'b':[2,3,2,1,3,1]})
-teste['c'] = pd.Series(teste.groupby('b')['a'].expanding().count().sort_index(level=1).values.astype('int'),index=teste.index)
-
-pd.Series(teste['a'])
-
-pd.crosstab(lista['departamento'],lista['periodo'],margins=True)
-
 lista.columns
+
+lista.to_json('/media/fernando/Bulk/Scripts/gedae/cata_materias/lista.json','records')
