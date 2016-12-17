@@ -35,7 +35,7 @@ function format ( d ) {
 	'<tr class="sub">'+
 	    '<td>Horário: '+d.aula1_dia+', das '+d.aula1_inicio+' às '+d.aula1_fim+'</td>'+
 	    '<td></td>'+
-	    '<td style="text-align:right">Prof(a). '+d.aula1_professor+'</td>'+
+	    '<td style="text-align:right">Prof(a).: '+d.aula1_professor+'</td>'+
 	'</tr>'+
 	'<tr>'+
 	    '<td colspan="3"><p style="text-align:center"><b>Sinopse da matéria</b></p>'+
@@ -80,9 +80,9 @@ $(document).ready(function() {
 	}
     } );
     
-    $('#dep').on('change', 'input', function () {
+    $('#ctrl_dep').on('change', 'input', function () {
 	var arr = new Array;
-	var inps = $('#dep input');
+	var inps = $('#ctrl_dep input');
 	for (n in inps) {
 	    if (inps[n].checked==true) {
 		arr.push("("+inps[n].value+")");
@@ -104,13 +104,23 @@ $(document).ready(function() {
 	table.draw();
     });
     
-    $('#togg_ctrl').on('click', function () {
-	if ($('#ctrl_av').css('display')=='none') {
-	    $('#togg_ctrl').text("Controles avançados <");
-	    $('#ctrl_av').slideDown(200);
+    $('#togg_hr').on('click', function () {
+	if ($('#ctrl_hr').css('display')=='none') {
+	    $('#arr_hr').html("&#9662;");
+	    $('#ctrl_hr').slideDown(200);
 	} else {
-	    $('#togg_ctrl').text("Controles avançados >");
-	    $('#ctrl_av').slideUp(200);
+	    $('#arr_hr').html("&#9656;");
+	    $('#ctrl_hr').slideUp(200);
+	};
+    });
+    
+    $('#togg_dep').on('click', function () {
+	if ($('#ctrl_dep').css('display')=='none') {
+	    $('#arr_dep').html("&#9662;");
+	    $('#ctrl_dep').slideDown(200);
+	} else {
+	    $('#arr_dep').html("&#9656;");
+	    $('#ctrl_dep').slideUp(200);
 	};
     });
 } );

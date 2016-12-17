@@ -9,15 +9,13 @@
     </head>
     <body>
 	<div style="max-width:900px;margin:auto">
-	<table style="border-spacing:0">
-	    <tr><td>Busca: </td><td><input type="text" size="45" id="buscatps"> <span id="togg_ctrl" style="font-size:70%;cursor:pointer">Controles avançados ></td></tr>
-	    <tr><td></td><td style="color:gray;font-size:80%;font-style:italic">(nome, sigla ou professor da matéria)</td></tr>
-	</table>
-	<div id="ctrl_av" style="display:none">
-	    <p style="margin-top:1em;margin-bottom:0;font-size:95%;padding-left:10px">
-	    Períodos
+	    <div>
+		Busca: <input type="text" id="buscatps" placeholder="Nome, sigla ou professor da matéria" style="width:75%;max-width:300px">
+	    </div>
+	    <p style="margin-top:.5em;margin-bottom:0;font-size:95%;padding-left:10px">
+	    <span id="togg_hr" style="cursor:pointer"><span id="arr_hr" style="color:gray">&#9656;</span> Horários</span>
 	    </p>
-	    <p style="padding-left:50px;margin-top:0">
+	    <p id="ctrl_hr" style="padding-left:30px;margin-top:0;display:none">
 	    <table id="grade">
 		<tr><th>seg</th><th>ter</th><th>qua</th><th>qui</th><th>sex</th><th>sáb</th></tr>
 		<tr><td class="grade_chk">Manhã</td><td class="grade_chk">Manhã</td><td class="grade_chk">Manhã</td><td class="grade_chk">Manhã</td><td class="grade_chk">Manhã</td><td class="grade_chk">Manhã</td></tr>
@@ -26,9 +24,9 @@
 	    </table>
 	    </p>
 	    <p style="margin-top:0.5em;margin-bottom:0;font-size:95%;padding-left:10px">
-	    Departamento
+	    <span id="togg_dep" style="cursor:pointer"><span id="arr_dep" style="color:gray">&#9656;</span> Departamentos</span>
 	    </p>
-	    <p id="dep" style="padding-left:50px;margin-top:0.5em;font-size:80%;vertical-align:middle">
+	    <p id="ctrl_dep" style="padding-left:30px;margin-top:0.5em;font-size:80%;vertical-align:middle;display:none">
 	    <input type="checkbox" value="Adm Escolar e Economia da Educação" checked> Administração Escolar e Economia da Educação
 	    <br>
 	    <input type="checkbox" value="Filosofia da Educ e Ciências da Educ" checked> Filosofia da Educação e Ciências da Educação
@@ -36,25 +34,25 @@
 	    <input type="checkbox" value="Metodologia do Ensino e Ed Comparada" checked> Metodologia do Ensino e Educação Comparada
 	    <br><input type="checkbox" value="Disciplinas Interdepartamentais da Faculdade de Educação" checked> Disciplinas interdepartamentais
 	    </p>
-	</div>
-	<table id="example" class="display" cellspacing="0" width="100%">
-	    <thead>
-		<tr>
-		    <th>Departamento</th>
-		    <th>Sigla</th>
-		    <th>Matéria</th>
-		    <th>Cód. Turma</th>
-		</tr>
-	    </thead>
-	    <tfoot>
-		<tr>
-		    <th>Departamento</th>
-		    <th>Sigla</th>
-		    <th>Matéria</th>
-		    <th>Cód. Turma</th>
-		</tr>
-	    </tfoot>
-	</table>
+	    <br>
+	    <table id="example" class="display" cellspacing="0" width="100%">
+		<thead>
+		    <tr>
+			<th>Departamento</th>
+			<th>Sigla</th>
+			<th>Matéria</th>
+			<th>Cód. Turma</th>
+		    </tr>
+		</thead>
+		<tfoot>
+		    <tr>
+			<th>Departamento</th>
+			<th>Sigla</th>
+			<th>Matéria</th>
+			<th>Cód. Turma</th>
+		    </tr>
+		</tfoot>
+	    </table>
 	</div>
     </body>
 </html>
