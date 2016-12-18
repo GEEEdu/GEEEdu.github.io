@@ -364,7 +364,16 @@ table.dataTable,table.dataTable th,table.dataTable td{
 body {
     font-family: Calibri,Arial,Liberation Sans;
 }
-#grade td:not(.grade_chk) {
+#grade th{
+    font-size:80%
+}
+#grade span.grade_col{
+    cursor:pointer
+}
+#grade td.grade_lin{
+    cursor:pointer
+}
+#grade td.grade_unchk {
     background-color: #ccc;
     color: #666;
     border: 1px solid #666;
@@ -372,10 +381,7 @@ body {
     text-align: center;
     cursor: pointer
 }
-#grade th{
-    font-size:80%
-}
-td.grade_chk {
+#grade td.grade_chk {
     background-color: #88cc88;
     color: #226622;
     border: 1px solid #262;

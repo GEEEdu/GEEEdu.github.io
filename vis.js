@@ -3,7 +3,7 @@ $.fn.dataTable.ext.search.push(
 	dias = ['seg','ter','qua','qui','sex','sab'];
 	periodos = [];
 	for (i in dias) {
-	    buff = $("#grade tr td:nth-child("+String(Number(i)+1)+").grade_chk").toArray();
+	    buff = $("#grade tr td:nth-child("+String(Number(i)+2)+").grade_chk").toArray();
 	    for (b in buff) {
 		buff[b] = buff[b].innerHTML;
 	    }
@@ -95,8 +95,33 @@ $(document).ready(function() {
 	table.draw();
 	});
 
-    $('#grade td').on('click', function () {
+    $('#grade td.grade_chk').on('click', function () {
 	$(this).toggleClass('grade_chk');
+	$(this).toggleClass('grade_unchk');
+	table.draw();
+    });
+
+    $('span.grade_col').on('click', function () {
+	var num = 7 - $(this).closest('th').nextAll().size();
+	if ($('#grade td:nth-child('+String(num)+').grade_chk').size()>1) {
+	    $('#grade td:nth-child('+String(num)+').grade_chk').addClass('grade_unchk');
+	    $('#grade td:nth-child('+String(num)+').grade_chk').removeClass('grade_chk');
+	} else {
+	    $('#grade td:nth-child('+String(num)+').grade_unchk').addClass('grade_chk');
+	    $('#grade td:nth-child('+String(num)+').grade_unchk').removeClass('grade_unchk');
+	}
+	table.draw();
+    });
+
+    $('td.grade_lin').on('click', function () {
+	var that = this;
+	if ($(that).nextAll('.grade_chk').size()>3) {
+	    $(that).nextAll('.grade_chk').addClass('grade_unchk');
+	    $(that).nextAll('.grade_chk').removeClass('grade_chk');
+	} else {
+	    $(that).nextAll('.grade_unchk').addClass('grade_chk');
+	    $(that).nextAll('.grade_unchk').removeClass('grade_unchk');
+	};
 	table.draw();
     });
 

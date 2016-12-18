@@ -1,4 +1,4 @@
-import pandas as pd
+import pandas as pd, os
 
 lista = pd.read_csv('~/Bulk/Scripts/gedae/cata_materias/201701.csv')
 
@@ -38,4 +38,5 @@ lista.reset_index(inplace=True)
 
 lista.columns
 
-lista.to_json('/media/fernando/Bulk/Scripts/gedae/cata_materias/lista.json','records')
+lista.to_json('/media/fernando/Bulk/Scripts/gedae/cata_materias/lista.js','records')
+os.system("sed -i '1s/^/var lista = /' lista.js")
