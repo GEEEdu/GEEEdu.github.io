@@ -1,5 +1,8 @@
-<html>
-    <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Guia de Aulas sobre Educação na USP</title>
         <link href="styling.css" rel="stylesheet" type="text/css">
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
@@ -8,51 +11,82 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-	<div style="max-width:900px;margin:auto">
-	    <div>
-		Busca: <input type="text" id="buscatps" placeholder="Nome, sigla ou professor da matéria" style="width:75%;max-width:300px">
+	<div id="guia_wrapper" style="max-width:800px;margin:auto">
+	    <h1 style="text-align:center">Guia de Aulas sobre Educação na USP<span style="font-size:30%">[beta]</span></h1>
+	    <h2 style="text-align:center">1º Semestre, 2017</h2>
+	    <p style="text-align:center;margin-top:4em;margin-bottom:2em;font-size:110%">
+		Na Universidade de São Paulo, é possível acompanhar disciplinas ofertadas em seus campi como ouvinte. Na intenção de aproximar essa oportunidade e os interessados em Educação e temas afins, reorganizamos aqui dados publicados pela própria universidade. Nesta página, alunos que tenham uma vaga em sua grade horária ou não-alunos que se interessem pelas aulas podem não só acessar a relação de turmas, mas filtrá-las por horário, professor, etc.
+		<br><br>
+		Aos que não têm disponibilidade de frequentar as aulas pessoalmente, a lista pode ainda servir como panorama do campo e atalho para as páginas das disciplinas no sistema da universidade, que trazem indicações da literatura relevante em seus tópicos.
+		<br><br>
+		No momento a ferramenta ainda está em desenvolvimento e dispõe apenas das turmas de Pedagogia e licenciaturas sob responsabilidade da Faculdade de Educação (Campus Butantã), mas o objetivo é abranger todas as unidades na capital paulista. Em caso de dúvidas, problemas ou sugestões para a ferramenta, é só enviar um e-mail para <span id="feedback">materias_edu@googlegroups.com</span>!
+	    </p>
+	    <div style="text-align:left;margin-top:3em;margin-bottom:4em;font-size:95%">
+		Orientações:
+		<ul>
+		    <li>O interessado em frequentar as aulas deve consultar anteriormente o professor da respectiva turma. Caso decida fazê-lo por e-mail, os endereços podem ser encontrados na <a href="http://www4.fe.usp.br/acesso-rapido4/docentes">página da faculdade</a>;</li>
+		    <li>As relações com as salas de cada turma costumam ser expostas em murais nos prédios das respectivas unidades a partir do início das aulas;</li>
+		    <li>As aulas começam no dia 6 de março e vão no máximo até o dia 8 de julho, como consta no <a href="https://uspdigital.usp.br/jupiterweb/jupCalendario2017_final.jsp?codmnu=7920">Calendário USP 2017</a>.</li>
+		</ul>
 	    </div>
-	    <p style="margin-top:.5em;margin-bottom:0;font-size:95%;padding-left:10px">
-	    <span id="togg_hr" style="cursor:pointer"><span id="arr_hr" style="color:gray">&#9656;</span> Horários</span>
-	    </p>
-	    <p id="ctrl_hr" style="padding-left:30px;margin-top:0;display:none">
-	    <table id="grade">
-		<tr><th><span class="grade_col"></span></th><th><span class="grade_col">seg</span></th><th><span class="grade_col">ter</span></th><th><span class="grade_col">qua</span></th><th><span class="grade_col">qui</span></th><th><span class="grade_col">sex</span></th><th><span class="grade_col">sáb</span></th></tr>
-		<tr><td class="grade_lin">&#9476;</td><td class="grade_chk">Manhã</td><td class="grade_chk">Manhã</td><td class="grade_chk">Manhã</td><td class="grade_chk">Manhã</td><td class="grade_chk">Manhã</td><td class="grade_chk">Manhã</td></tr>
-		<tr><td class="grade_lin">&#9476;</td><td class="grade_chk">Tarde</td><td class="grade_chk">Tarde</td><td class="grade_chk">Tarde</td><td class="grade_chk">Tarde</td><td class="grade_chk">Tarde</td><td class="grade_chk">Tarde</td></tr>
-		<tr><td class="grade_lin">&#9476;</td><td class="grade_chk">Noite</td><td class="grade_chk">Noite</td><td class="grade_chk">Noite</td><td class="grade_chk">Noite</td><td class="grade_chk">Noite</td><td class="grade_chk">Noite</td></tr>
-	    </table>
-	    </p>
-	    <p style="margin-top:0.5em;margin-bottom:0;font-size:95%;padding-left:10px">
-	    <span id="togg_dep" style="cursor:pointer"><span id="arr_dep" style="color:gray">&#9656;</span> Departamentos</span>
-	    </p>
-	    <p id="ctrl_dep" style="padding-left:30px;margin-top:0.5em;font-size:80%;vertical-align:middle;display:none">
-	    <input type="checkbox" value="Adm Escolar e Economia da Educação" checked> Administração Escolar e Economia da Educação
+	    <div id="controls_wrapper">
+	    <div id="controls">
+		<div style="width:100%;max-width:600px;margin:auto;background-color:#d9d9d9;padding:1px">
+		    <div style="width:100%">
+			<input type="text" id="buscatps" placeholder="Buscar nome, código ou professor da matéria" style="width:100%;padding:.3em .5em;border-color:#d9d9d9;border-style:solid;border-width:1px;box-sizing:border-box">
+		    </div>
+		    <div style="width:100%;font-size:100%;display:table;box-sizing:border-box;margin:auto;border-color:gray;border-style:hidden;border-width:1px;color:#222">
+			<div style="display:table-cell;width:auto;text-align:center;padding:.35em .6em;background-color:gray"><img src="funnel.png" style="max-height:.8em;filter:invert(100%)"></div>
+			<div id="but_hr" style="text-decoration:nderline;display:table-cell;width:46%;text-align:center;padding:.25em 0 .35em 0;border-style:hidden;border-width:1px;border-color:#888">
+			    <span id="togg_hr" style="cursor:pointer">
+				Horários
+			    </span>
+			</div>
+			<div id="test_divisor" style="width:0px;height:80%;display:table-cell;border-width:1px;border-style:hidden solid hidden hidden;border-color:#bbb"></div>
+			<div id="but_dep" style="text-decoration:nderline;display:table-cell;width:50%;text-align:center;padding:.25em 0 .35em 0;border-style:hidden;border-width:1px;border-color:#888">
+			    <span id="togg_dep" style="cursor:pointer">
+				Departamentos
+			    </span>
+			</div>
+		    </div>
+		    <div id="ctrl_hr" style="margin:auto;display:none;padding:.5em 0 .9em 0;background-color:#f3f3f3;border-color:#d9d9d9;border-style:hidden;border-width:1px">
+			<table id="grade" style="margin:auto">
+			    <tr><th><span class="grade_col"></span></th><th><span class="grade_col">seg</span></th><th><span class="grade_col">ter</span></th><th><span class="grade_col">qua</span></th><th><span class="grade_col">qui</span></th><th><span class="grade_col">sex</span></th><th><span class="grade_col">sáb</span></th></tr>
+			    <tr><td class="grade_lin" style="font-size:60%">></td><td class="grade_chk">Manhã</td><td class="grade_chk">Manhã</td><td class="grade_chk">Manhã</td><td class="grade_chk">Manhã</td><td class="grade_chk">Manhã</td><td class="grade_chk">Manhã</td></tr>
+			    <tr><td class="grade_lin" style="font-size:60%">></td><td class="grade_chk">Tarde</td><td class="grade_chk">Tarde</td><td class="grade_chk">Tarde</td><td class="grade_chk">Tarde</td><td class="grade_chk">Tarde</td><td class="grade_chk">Tarde</td></tr>
+			    <tr><td class="grade_lin" style="font-size:60%">></td><td class="grade_chk">Noite</td><td class="grade_chk">Noite</td><td class="grade_chk">Noite</td><td class="grade_chk">Noite</td><td class="grade_chk">Noite</td><td class="grade_chk">Noite</td></tr>
+			</table>
+		    </div>
+		    <div id="ctrl_dep" style="margin:auto;display:none;padding:.5em 0 .9em 0;background-color:#f3f3f3;border-color:#d9d9d9;border-style:hidden;border-width:1px">
+			<table style="margin:auto;font-size:80%">
+			<tr>
+			<td><input type="checkbox" value="Adm Escolar e Economia da Educação" checked> Administração Escolar e Economia da Educação</td>
+			</tr>
+			<tr>
+			<td><input type="checkbox" value="Filosofia da Educ e Ciências da Educ" checked> Filosofia da Educação e Ciências da Educação</td>
+			</tr>
+			<tr>
+			<td><input type="checkbox" value="Metodologia do Ensino e Ed Comparada" checked> Metodologia do Ensino e Educação Comparada</td>
+			</tr>
+			<tr>
+			<td><input type="checkbox" value="Disciplinas Interdepartamentais da Faculdade de Educação" checked> Disciplinas interdepartamentais</td>
+			</tr>
+			</table>
+		    </div>
+		</div>
+	    </div>
 	    <br>
-	    <input type="checkbox" value="Filosofia da Educ e Ciências da Educ" checked> Filosofia da Educação e Ciências da Educação
-	    <br>
-	    <input type="checkbox" value="Metodologia do Ensino e Ed Comparada" checked> Metodologia do Ensino e Educação Comparada
-	    <br><input type="checkbox" value="Disciplinas Interdepartamentais da Faculdade de Educação" checked> Disciplinas interdepartamentais
-	    </p>
-	    <br>
-	    <table id="example" class="display" cellspacing="0" width="100%">
+	    <table id="example" class="display" cellspacing="0" width="100%" style="margin-top:1em">
 		<thead>
 		    <tr>
 			<th>Departamento</th>
-			<th>Sigla</th>
-			<th>Matéria</th>
+			<th>Cód. Matéria</th>
+			<th>Título da Matéria</th>
 			<th>Cód. Turma</th>
 		    </tr>
 		</thead>
-		<tfoot>
-		    <tr>
-			<th>Departamento</th>
-			<th>Sigla</th>
-			<th>Matéria</th>
-			<th>Cód. Turma</th>
-		    </tr>
-		</tfoot>
 	    </table>
+	</div>
 	</div>
     </body>
 </html>

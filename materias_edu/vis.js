@@ -28,7 +28,7 @@ $.fn.dataTable.ext.search.push(
     });
 
 function format ( d ) {
-    return '<table cellpadding="5" cellspacing="0" border="0" class="sub" style="padding-left:50px;font-size:80%">'+
+    return '<table cellpadding="5" cellspacing="0" border="0" class="sub" style="padding-right:7.5%;padding-left:7.5%;font-size:80%">'+
 	'<tr>'+
 	    '<td colspan="3" style="text-align:center"><b>Departamento de '+d.departamento+'</b></td>'+
 	'</tr>'+
@@ -60,7 +60,7 @@ $(document).ready(function() {
 	    { data: "aula1_professor", "visible": false } 
 	],
 	"columnDefs": [
-	    { className: "dt-body-center", "targets": [1,3] }
+	    { className: "dt-body-center", "targets": [1,2,3] }
 	]
     } );
 
@@ -130,22 +130,32 @@ $(document).ready(function() {
     });
     
     $('#togg_hr').on('click', function () {
-	if ($('#ctrl_hr').css('display')=='none') {
-	    $('#arr_hr').html("&#9662;");
+	if ($('#ctrl_hr').css('display')=='none' && $('#ctrl_dep').css('display')=='none') {
 	    $('#ctrl_hr').slideDown(200);
-	} else {
-	    $('#arr_hr').html("&#9656;");
+	    $('#but_hr').addClass('shdw');
+	} else if ($('#ctrl_hr').css('display')!='none') {
 	    $('#ctrl_hr').slideUp(200);
+	    $('#but_hr').removeClass('shdw');
+	} else {
+	    $('#ctrl_dep').hide();
+	    $('#but_hr').addClass('shdw');
+	    $('#but_dep').removeClass('shdw');
+	    $('#ctrl_hr').show();
 	};
     });
     
     $('#togg_dep').on('click', function () {
-	if ($('#ctrl_dep').css('display')=='none') {
-	    $('#arr_dep').html("&#9662;");
+	if ($('#ctrl_hr').css('display')=='none' && $('#ctrl_dep').css('display')=='none') {
 	    $('#ctrl_dep').slideDown(200);
-	} else {
-	    $('#arr_dep').html("&#9656;");
+	    $('#but_dep').addClass('shdw');
+	} else if ($('#ctrl_dep').css('display')!='none') {
 	    $('#ctrl_dep').slideUp(200);
+	    $('#but_dep').removeClass('shdw');
+	} else {
+	    $('#ctrl_hr').hide();
+	    $('#but_dep').addClass('shdw');
+	    $('#but_hr').removeClass('shdw');
+	    $('#ctrl_dep').show();
 	};
     });
 } );

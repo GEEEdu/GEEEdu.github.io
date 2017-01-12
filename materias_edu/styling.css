@@ -1,3 +1,6 @@
+html{
+    background: #fafafa url('achtergrond75.jpg') no-repeat top center fixed
+}
 table.dataTable{
 	width:100%;
 	margin:0 auto;
@@ -6,7 +9,8 @@ table.dataTable{
 	border-spacing:0
 }
 table.dataTable thead th,table.dataTable tfoot th{
-	font-weight:bold
+	font-weight:bold;
+	background: white
 }
 table.dataTable thead th,table.dataTable thead td{
 	padding:5px 9px;
@@ -388,4 +392,13 @@ body {
     font-size: 80%;
     text-align: center;
     cursor: pointer
+}
+input {
+    font-size:100%
+}
+.shdw{
+    background-color:#bbb
+}
+#feedback:hover{
+    text-decoration:underline
 }
